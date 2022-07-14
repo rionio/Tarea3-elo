@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>Ressources/btn.png</file>
+        <file>Ressources/btn1.png</file>
+        <file>Ressources/power-button-icon-8371.png</file>
+    </qresource>
+</RCC>
