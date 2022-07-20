@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LampWidget</class>
- <widget class="QWidget" name="LampWidget">
+ <class>LampWidgett</class>
+ <widget class="QWidget" name="LampWidgett">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -89,6 +89,9 @@
     </property>
     <property name="maximum">
      <number>3</number>
+    </property>
+    <property name="value">
+     <number>2</number>
     </property>
    </widget>
   </widget>
