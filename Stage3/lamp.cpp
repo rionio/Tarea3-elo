@@ -1,10 +1,16 @@
+#include <iostream>
 #include "lamp.h"
 #include "ui_lamp.h"
 #include "lampview.h"
+using namespace std;
 
-LampWidget::LampWidget(QWidget *parent):
+void LampWidgett::fchanged(int c){
+    cout << "nmero ql " << c << endl;
+    channel = c;
+}
+LampWidgett::LampWidgett(QWidget *parent):
     QWidget(parent)
-    , ui(new Ui::LampWidget)
+    , ui(new Ui::LampWidgett)
 {
     ui->setupUi(this);
     lampView1 = new LampView(ui->LampsView);
@@ -13,9 +19,19 @@ LampWidget::LampWidget(QWidget *parent):
     ui ->LampsView->setScene(lampView1);
     ui ->LampsView2->setScene(lampView2);
 
-    connect(ui->bxChannel,SIGNAL(valueChanged(int)),this,SLOT(on_spinBox_changed(int)));
+    connect(ui->bxChannel,SIGNAL(valueChanged(int)),this,SLOT(fchanged(int)));
 
     if(channel == 2){
+         cout << "chan 1 " << this->channel << endl;
+        ui->btnPower->setCheckable(true);
+        ui->sldIntesity->setSliderPosition(lampView1->getIntensity());
+
+        connect(ui->btnPower,SIGNAL(clicked()), lampView1,SLOT(changeState()));
+        connect(ui->sldIntesity,SIGNAL(valueChanged(int)),lampView1,SLOT(changeIntensity(int)));
+        connect(ui->sldIntesity,SIGNAL(valueChanged(int)),lampView1,SLOT(setIntensity()));
+    }
+    else if(channel == 3){
+        cout << "chan 0 " << this->channel << endl;
         ui->btnPower->setCheckable(true);
         ui->sldIntesity->setSliderPosition(lampView1->getIntensity());
 
@@ -24,6 +40,7 @@ LampWidget::LampWidget(QWidget *parent):
         connect(ui->sldIntesity,SIGNAL(valueChanged(int)),lampView1,SLOT(setIntensity()));
     }
     else{
+        cout << "chan else " << this->channel << endl;
         ui->btnPower->setCheckable(true);
         ui->sldIntesity->setSliderPosition(lampView2->getIntensity());
 
@@ -34,10 +51,8 @@ LampWidget::LampWidget(QWidget *parent):
     }
 
 }
-void LampWidget::on_spinBox_changed(int c){
-    channel = c;
-}
-LampWidget::~LampWidget()
+
+LampWidgett::~LampWidgett()
 {
     delete ui;
 }

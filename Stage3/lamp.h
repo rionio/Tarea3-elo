@@ -5,22 +5,24 @@
 #include "lampview.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class LampWidget; }
+namespace Ui { class LampWidgett; }
 QT_END_NAMESPACE
 
-class LampWidget : public QWidget
+class LampWidgett : public QWidget
 {
     Q_OBJECT
 
 public:
-    LampWidget(QWidget *parent = nullptr);
-    void on_spinBox_changed(int c);
-    ~LampWidget();
+    LampWidgett(QWidget *parent = nullptr);
+     int channel;
+    ~LampWidgett();
 
+public slots:
+     void fchanged(int c);
 
 private:
-    Ui::LampWidget *ui;
+    Ui::LampWidgett *ui;
     LampView *lampView1, *lampView2;
-    int channel;
+
 };
 #endif // LAMP_H
