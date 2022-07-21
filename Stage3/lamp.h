@@ -14,13 +14,15 @@ class LampWidget : public QWidget
 
 public:
     LampWidget(QWidget *parent = nullptr);
-    void on_spinBox_changed(int c);
     ~LampWidget();
+    int channel;
 
+public slots:
+        void onSpinBoxChanged(int c);
 
 private:
     Ui::LampWidget *ui;
     LampView *lampView1, *lampView2;
-    int channel;
+
 };
 #endif // LAMP_H
